@@ -139,7 +139,24 @@ public class MainFrame extends JFrame {
 		}
 		
 	}
-	
+	public void autoUpdate()
+	{
+		class AutoUpdate implements Runnable{
+			public void run() {
+				while(true){
+					updateData();
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		Thread t = new Thread(new AutoUpdate());
+		t.start();
+	}
 	
 	public static void main(String[] args) {
 		MainFrame main = new MainFrame();

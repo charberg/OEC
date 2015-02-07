@@ -20,7 +20,7 @@ public class MainButtonListener implements ActionListener{
 			//Check if trains need to be slowed or stopped
 			
 		}else if(srcButton.getActionCommand().equals("AUTO")){
-			
+			main.autoUpdate();
 		}else if(srcButton.getActionCommand().equals("PAUSE")){
 		
 		}else if(srcButton.getActionCommand().equals("zoomIn")){
