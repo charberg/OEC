@@ -3,3 +3,6 @@
 /Train.class
 /MainButtonListener.class
 /Train$Colour.class
+/TrainGridPanel.class
+/GridBox.class
+/GridBoxListener.class

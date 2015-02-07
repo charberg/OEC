@@ -12,14 +12,18 @@ public class TrainGridPanel extends JPanel{
 	
 	public TrainGridPanel(int sizeX, int sizeY){
 		
-		setLayout(new GridLayout());
+		setLayout(new GridLayout(sizeX,sizeY));
 		for(int i=0;i<sizeX;i++){
 			for(int j=0;j<sizeY;j++){
-				//TODO: add 
+				//TODO: add action listener to gridbox
+				add(new GridBox(i,j,"empty"));
 			}
 		}
 		
+		//setVisible(true);
 	}
+	
+	
 	
 	
 

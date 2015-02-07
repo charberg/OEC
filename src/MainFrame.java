@@ -12,7 +12,7 @@ import java.awt.GraphicsEnvironment;
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut;
+	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut, quitButton;
 	private JLabel trainStats;
 	
 	public MainFrame(){
@@ -51,14 +51,19 @@ public class MainFrame extends JFrame {
 		
 		trainStats = new JLabel("TRAIN DATA HERE");
 		
+		quitButton = new JButton("QUIT");
+		quitButton.addActionListener(buttonListener);
+		quitButton.setActionCommand("QUIT");
+		
 		JPanel topPanel = new JPanel();
 		topPanel.add(trainStats);
+		topPanel.add(quitButton);
 		
 		add(topPanel, BorderLayout.NORTH);
 		
 		//Middle Panel (Trains)
 		
-		JPanel midPanel = new JPanel();
+		TrainGridPanel midPanel = new TrainGridPanel(334,267);
 		add(midPanel, BorderLayout.CENTER);
 		
 		

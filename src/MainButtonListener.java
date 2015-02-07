@@ -25,6 +25,8 @@ public class MainButtonListener implements ActionListener{
 			
 		}else if(srcButton.getActionCommand().equals("zoomOut")){
 			
+		}else if(srcButton.getActionCommand().equals("QUIT")){
+			System.exit(0);
 		}else{
 			System.out.println("Unrecognized Button Press");
 		}
