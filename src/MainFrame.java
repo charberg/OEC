@@ -21,6 +21,7 @@ public class MainFrame extends JFrame {
 	private JTextField searchBar;
 	private JLabel trainStats;
 	private TrainDataReader data;
+	private TrainGridPanel midPanel;
 	
 	public MainFrame(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +71,7 @@ public class MainFrame extends JFrame {
 		
 		//Middle Panel (Trains)
 		
-		TrainGridPanel midPanel = new TrainGridPanel(334,267);
+		midPanel = new TrainGridPanel(334,267);
 		add(midPanel, BorderLayout.CENTER);
 		
 		
@@ -121,6 +122,10 @@ public class MainFrame extends JFrame {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		for(Train t : data.getTrains())
+		{
+			midPanel.updateTrains(t.getFrtLoc(), t.getRearLoc(), t.getId());
 		}
 	}
 	

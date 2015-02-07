@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /** Panel that goes inside of the TrainGridPanel **/
-public class GridBox extends JButton{
+public class GridBox extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private String boxColour;
@@ -49,6 +49,9 @@ public class GridBox extends JButton{
 		}else if(status.equals("Slow")){
 			this.setBackground(Color.YELLOW);
 			boxColour = "yellow";
+		}else if(status.equals("route")){
+			this.setBackground(Color.CYAN);
+			boxColour = "cyan";
 		}else{
 			this.setBackground(Color.BLUE);
 			boxColour = "blue";
