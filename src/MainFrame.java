@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JButton stepButton, autoButton, pauseButton;
+	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut;
 	private JLabel trainStats;
 	
 	public MainFrame(){
@@ -57,6 +57,23 @@ public class MainFrame extends JFrame {
 		JPanel midPanel = new JPanel();
 		
 		add(midPanel, BorderLayout.CENTER);
+		
+		
+		//Right Panel
+		
+		zoomIn = new JButton("ZOOM +");
+		zoomIn.setActionCommand("zoomIn");
+		zoomIn.addActionListener(buttonListener);
+		
+		zoomOut = new JButton("ZOOM -");
+		zoomOut.setActionCommand("zoomOut");
+		zoomOut.addActionListener(buttonListener);
+		
+		JPanel leftPanel = new JPanel();
+		leftPanel.add(zoomIn);
+		leftPanel.add(zoomOut);
+		
+		add(leftPanel, BorderLayout.EAST);
 		
 		
 		setVisible(true);

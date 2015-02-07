@@ -20,6 +20,10 @@ public class MainButtonListener implements ActionListener{
 		}else if(srcButton.getActionCommand().equals("AUTO")){
 			
 		}else if(srcButton.getActionCommand().equals("PAUSE")){
+		
+		}else if(srcButton.getActionCommand().equals("zoomIn")){
+			
+		}else if(srcButton.getActionCommand().equals("zoomOut")){
 			
 		}else{
 			System.out.println("Unrecognized Button Press");
