@@ -1,6 +1,10 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class Train {
-	public enum Colour{RED, YELLOW, GREEN};
+	public String colour;	//Red, Yellow, or Green
 	private Integer id, frtLoc, rearLoc, speed;
 	private String track, status;
 	/**
@@ -112,14 +116,14 @@ public class Train {
 	 * @param c The colour that we need the hex value for
 	 * @return The hex value of the colour
 	 */
-	public int getColour(Train.Colour c)
+	public int getColour()
 	{
-		switch (c){
-		case RED:
+		switch (colour){
+		case "RED":
 			return 0xFF0000;
-		case YELLOW:
+		case "YELLOW":
 			return 0xFFFF00;
-		case GREEN:
+		case "GREEN":
 			return 0x00FF00;
 		default:
 			return 0x0000FF;
@@ -129,26 +133,26 @@ public class Train {
 	 * Calculate the distance of the nozone on the train, at the rear of the train
 	 * @return The float value of the nozone on the train
 	 */
-	public float getNoZoneDistance() {
+	public double getNoZoneDistance() {
 		
 		//Use speed in meters/second
-		float speedMperS = speed * 1000.0f;
+		double speedMperS = speed * 1000.0;
 		
-		if (speed == 0.0f) {
+		if (speed == 0.0) {
 			
 			return 100.0f;
 			
 		} else if (speed >= 1.0f && speed <= 30.0f) {
 			
-			return (-0.000352034f) * speedMperS + 100.0f;
+			return (-0.000352034) * speedMperS + 100.0;
 					
 		} else if (speed >= 31.0f && speed <= 50.0f) {
 			
-			return (-0.00035f) * speedMperS + 100.0f;
+			return (-0.00035) * speedMperS + 100.0;
 			
 		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
-			return (-0.00035f) * speedMperS + 100.0f;
+			return (-0.00035) * speedMperS + 100.0;
 			
 		} else {
 			
@@ -162,30 +166,30 @@ public class Train {
 	 * Calculate the slow down zone at the front of the train
 	 * @return	The distance in front of the train that the slow down zone starts
 	 */
-	public float getYellowSafeZoneDistance() {
+	public double getYellowSafeZoneDistance() {
 		
 		//Use speed in meters/second
-		float speedMperS = speed * 1000.0f;
+		double speedMperS = speed * 1000.0;
 		
-		if (speed == 0.0f) {
+		if (speed == 0.0) {
 			
-			return 100.0f;
+			return 100.0;
 			
-		} else if (speed >= 1.0f && speed <= 30.0f) {
+		} else if (speed >= 1.0 && speed <= 30.0) {
 			
-			return 0.0018f * speedMperS + 100.0f;
+			return 0.0018 * speedMperS + 100.0;
 					
-		} else if (speed >= 31.0f && speed <= 50.0f) {
+		} else if (speed >= 31.0 && speed <= 50.0) {
 			
-			return 0.002f * speedMperS + 100.0f;
+			return 0.002f * speedMperS + 100.0;
 			
-		} else if (speed >= 51.0f && speed <= 88.5f) {
+		} else if (speed >= 51.0 && speed <= 88.5) {
 			
-			return 0.0023f * speedMperS + 100.0f;
+			return 0.0023 * speedMperS + 100.0;
 			
 		} else {
 			
-			return 0.0f;
+			return 0.0;
 			
 		}
 	
@@ -194,33 +198,68 @@ public class Train {
 	 * Calculate the stop zone in front of the train
 	 * @return The distance in front of the train that the stop zone starts
 	 */
-	public float getRedSafeZoneDistance() {
+	public double getRedSafeZoneDistance() {
 		
 		//Use speed in meters/second
-		float speedMperS = speed * 1000.0f;
+		double speedMperS = speed * 1000.0;
 		
-		if (speed == 0.0f) {
+		if (speed == 0.0) {
 			
-			return 50.0f;
+			return 50.0;
 			
-		} else if (speed >= 1.0f && speed <= 30.0f) {
+		} else if (speed >= 1.0 && speed <= 30.0) {
 			
-			return 0.0011f * speedMperS + 50.0f;
+			return 0.0011 * speedMperS + 50.0;
 					
-		} else if (speed >= 31.0f && speed <= 50.0f) {
+		} else if (speed >= 31.0 && speed <= 50.0) {
 			
-			return 0.00125f * speedMperS + 50.0f;
+			return 0.00125 * speedMperS + 50.0;
 			
-		} else if (speed >= 51.0f && speed <= 88.5f) {
+		} else if (speed >= 51.0f && speed <= 88.5) {
 			
-			return 0.0014f * speedMperS + 50.0f;
+			return 0.0014 * speedMperS + 50.0;
 			
 		} else {
 			
-			return 0.0f;
+			return 0.0;
 			
 		}
 	
+	}
+	
+	/**
+	 * Determine whether train needs to slow down or stop, and write to results file if action is needed
+	 * @param t Train ahead 
+	 * @throws IOException
+	 */
+	public void slowStopCheck(Train t) throws IOException {
+		
+		//Distance to car in front of current train
+		double distance = (this.frtLoc - t.getRearLoc())*75.0 + t.getNoZoneDistance();	//Convert block to meters, add no-zone
+		
+		BufferedWriter out = null;
+		try  
+		{
+		    FileWriter fstream = new FileWriter("results.txt", true); //true tells to append data.
+		    out = new BufferedWriter(fstream);
+		}
+		catch (IOException e)
+		{
+		    System.err.println("Error: " + e.getMessage());
+		}
+		
+		if(distance < t.getRedSafeZoneDistance()) {
+			 this.colour = "RED";
+			 out.write("Train " + id + "slows down\n");
+		}
+		else if(distance < t.getYellowSafeZoneDistance()) {
+			this.colour = "YELLOW";
+			out.write("Train " + id + "stops\n");
+		}
+		else {
+			this.colour = "GREEN";
+		}
+		
 	}
 	
 }

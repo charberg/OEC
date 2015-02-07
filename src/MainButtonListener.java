@@ -17,6 +17,8 @@ public class MainButtonListener implements ActionListener{
 		JButton srcButton = (JButton) arg0.getSource();
 		if(srcButton.getActionCommand().equals("STEP")){
 			main.updateData();
+			//Check if trains need to be slowed or stopped
+			
 		}else if(srcButton.getActionCommand().equals("AUTO")){
 			
 		}else if(srcButton.getActionCommand().equals("PAUSE")){
