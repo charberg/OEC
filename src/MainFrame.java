@@ -5,6 +5,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 
 public class MainFrame extends JFrame {
@@ -17,6 +19,7 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,800);			//TODO: Needs to be changed to screen size
 		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);	//TODO: Make sure the window cannot be resized
+		setUndecorated(true);
 		setLayout(new BorderLayout());
 		setTitle("CARLETON SIGNALING SYSTEM CONTROL PANEL - OEC");
 		
@@ -74,8 +77,6 @@ public class MainFrame extends JFrame {
 		leftPanel.add(zoomOut);
 		
 		add(leftPanel, BorderLayout.EAST);
-		
-		
 		setVisible(true);
 	}
 	
@@ -84,7 +85,7 @@ public class MainFrame extends JFrame {
 
 	public static void main(String[] args) {
 		MainFrame main = new MainFrame();
-
+		
 	}
 
 }
