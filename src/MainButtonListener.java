@@ -16,7 +16,7 @@ public class MainButtonListener implements ActionListener{
 	public void actionPerformed(ActionEvent arg0) {
 		JButton srcButton = (JButton) arg0.getSource();
 		if(srcButton.getActionCommand().equals("STEP")){
-			
+			main.updateData();
 		}else if(srcButton.getActionCommand().equals("AUTO")){
 			
 		}else if(srcButton.getActionCommand().equals("PAUSE")){

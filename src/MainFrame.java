@@ -5,8 +5,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.io.IOException;
 
 
 public class MainFrame extends JFrame {
@@ -14,6 +16,7 @@ public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut, quitButton;
 	private JLabel trainStats;
+	private TrainDataReader data;
 	
 	public MainFrame(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +85,29 @@ public class MainFrame extends JFrame {
 		leftPanel.add(zoomOut);
 		
 		add(leftPanel, BorderLayout.EAST);
+		try {
+			data = new TrainDataReader();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+		try {
+			data.readTrainData();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 		setVisible(true);
+	}
+	
+	public void updateData()
+	{
+		try {
+			data.readTrainData();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
