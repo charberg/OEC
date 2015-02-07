@@ -13,7 +13,11 @@ public class TrainGridPanel extends JPanel{
 	public TrainGridPanel(int sizeX, int sizeY){
 		
 		setLayout(new GridLayout());
-		
+		for(int i=0;i<sizeX;i++){
+			for(int j=0;j<sizeY;j++){
+				//TODO: add 
+			}
+		}
 		
 	}
 	

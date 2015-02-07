@@ -7,8 +7,9 @@ public class GridBox extends JPanel{
 	
 	private static final long serialVersionUID = 1L;
 	private String colour;
+	private int x,y;
 	
-	public GridBox(String type){
+	public GridBox(int xpos, int ypos, String type){
 		if(type.equals("route")){
 			setBackground(Color.CYAN);
 			colour = "cyan";
@@ -19,6 +20,9 @@ public class GridBox extends JPanel{
 			setBackground(Color.WHITE);
 			colour = "white";
 		}
+		
+		x = xpos;
+		y = ypos;
 		
 		
 	}
@@ -51,6 +55,13 @@ public class GridBox extends JPanel{
 		return colour;
 	}
 	
+	public int getX(){
+		return x;
+	}
+	
+	public int getY(){
+		return y;
+	}
 	
 	
 }
