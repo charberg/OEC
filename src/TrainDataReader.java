@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Test {
+public class TrainDataReader {
 	
 	private static final String DATAFILE = "Testing.txt";
 	//private static final String DATACOLUMNS
@@ -16,7 +16,7 @@ public class Test {
 	private File dataFile;
 	private BufferedReader br;
 	
-	public Test() throws IOException{
+	public TrainDataReader() throws IOException{
 		dataFile = new File(DATAFILE);
 		openFile();
 		this.findNumTrains();
@@ -117,7 +117,7 @@ public class Test {
 	}
 
 	public static void main(String[] args) throws IOException {
-		Test t = new Test();
+		TrainDataReader t = new TrainDataReader();
 		for(int i = 0; i < 5; i++) {
 			t.readTrainData();
 			for(Train test : t.trains) {
