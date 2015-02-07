@@ -1,3 +1,4 @@
+import java.awt.Dialog;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -126,6 +127,26 @@ public class TrainDataReader {
 			System.out.println("/////////////////////////////////////");
 		}
 
+	}
+	
+	public String searchTrains(String trainID) {
+		
+		if (trains == null) {
+			return "";
+		}
+		
+		if (trains.size() == 0) {
+			return "";
+		}
+		
+		for (Train t: trains)
+		{
+			if (t.getId().toString().equals(trainID)) {
+				return t.toString();
+			}
+		}
+		return "";
+		
 	}
 
 }

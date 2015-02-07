@@ -4,8 +4,11 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import java.awt.Dialog;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
@@ -14,7 +17,8 @@ import java.io.IOException;
 public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut, quitButton;
+	private JButton stepButton, autoButton, pauseButton,zoomIn,zoomOut, quitButton, searchButton;
+	private JTextField searchBar;
 	private JLabel trainStats;
 	private TrainDataReader data;
 	
@@ -80,9 +84,19 @@ public class MainFrame extends JFrame {
 		zoomOut.setActionCommand("zoomOut");
 		zoomOut.addActionListener(buttonListener);
 		
+		searchButton = new JButton("Search");
+		searchButton.setActionCommand("SEARCH");
+		searchButton.addActionListener(buttonListener);
+		
+		searchBar = new JTextField(6);
+		searchBar.setMaximumSize(getPreferredSize());
+		
 		JPanel leftPanel = new JPanel();
+		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.PAGE_AXIS));
 		leftPanel.add(zoomIn);
 		leftPanel.add(zoomOut);
+		leftPanel.add(searchBar);
+		leftPanel.add(searchButton);
 		
 		add(leftPanel, BorderLayout.EAST);
 		try {
@@ -110,9 +124,18 @@ public class MainFrame extends JFrame {
 		}
 	}
 	
+	public void searchTrain() {
+		String trainInfo = data.searchTrains(searchBar.getText().trim());
+		
+		if (!trainInfo.equals("")) {
+			JOptionPane.showMessageDialog(this, trainInfo);
+		} else  {
+			JOptionPane.showMessageDialog(this, "Unable to retrieve train information");
+		}
+		
+	}
 	
 	
-
 	public static void main(String[] args) {
 		MainFrame main = new MainFrame();
 		

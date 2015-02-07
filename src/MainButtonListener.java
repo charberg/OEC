@@ -23,6 +23,8 @@ public class MainButtonListener implements ActionListener{
 		
 		}else if(srcButton.getActionCommand().equals("zoomIn")){
 			
+		}else if(srcButton.getActionCommand().equals("SEARCH")){	
+			main.searchTrain();			
 		}else if(srcButton.getActionCommand().equals("zoomOut")){
 			
 		}else if(srcButton.getActionCommand().equals("QUIT")){
