@@ -1,5 +1,6 @@
 
 public class Train {
+	public enum Colour{RED, YELLOW, GREEN};
 	private Integer id, frtLoc, rearLoc, speed;
 	private String track, status;
 	public Train (Integer id, Integer frtLoc, Integer rearLoc, String track, Integer speed, String status)
@@ -43,5 +44,19 @@ public class Train {
 	}
 	public Integer getId() {
 		return id;
+	}
+	
+	public int getColour(Train.Colour c)
+	{
+		switch (c){
+		case RED:
+			return 0xFF0000;
+		case YELLOW:
+			return 0xFFFF00;
+		case GREEN:
+			return 0x00FF00;
+		default:
+			return 0x0000FF;
+		}
 	}
 }
