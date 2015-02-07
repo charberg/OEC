@@ -12,6 +12,10 @@ public class Train {
 		this.speed = speed;
 		this.status = status;
 	}
+	public String toString()
+	{
+		return "id: " + id + " Front Location: " + frtLoc + " Rear Location: " + rearLoc + " Track: " + track + " Speed: " + speed + " Status: " + status;
+	}
 	public Integer getFrtLoc() {
 		return frtLoc;
 	}
