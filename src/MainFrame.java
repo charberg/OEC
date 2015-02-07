@@ -14,20 +14,26 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);
+		setSize(800,800);			//TODO: Needs to be changed to screen size
+		setExtendedState(getExtendedState() | JFrame.MAXIMIZED_BOTH);	//TODO: Make sure the window cannot be resized
 		setLayout(new BorderLayout());
-		setTitle("CARLETON OEC");
+		setTitle("CARLETON SIGNALING SYSTEM CONTROL PANEL - OEC");
+		
+		MainButtonListener buttonListener = new MainButtonListener(this);
 		
 		//Bottom Panel (Buttons)
 		
 		stepButton = new JButton("STEP");
 		stepButton.setActionCommand("STEP");
+		stepButton.addActionListener(buttonListener);
 		
 		autoButton = new JButton("AUTO");
 		autoButton.setActionCommand("AUTO");
+		autoButton.addActionListener(buttonListener);
 		
 		pauseButton = new JButton("PAUSE");
 		pauseButton.setActionCommand("PAUSE");
+		pauseButton.addActionListener(buttonListener);
 		
 		JPanel bottomPanel = new JPanel();
 		
