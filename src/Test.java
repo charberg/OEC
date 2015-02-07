@@ -11,8 +11,8 @@ public class Test {
 	//private static final String DATACOLUMNS
 	
 	private int lineNumber = 0;
-	public int numTrains = -1;
-	public ArrayList<Train> trains = null;
+	private int numTrains = -1;
+	private ArrayList<Train> trains = null;
 	private File dataFile;
 	private BufferedReader br;
 	
@@ -23,6 +23,10 @@ public class Test {
 		openFile();	//Re-open file for train data reading
 		String x = br.readLine();	//Clear the column names row
 		
+	}
+	
+	public ArrayList<Train> getTrains() {
+		return trains;
 	}
 	
 	private void openFile() {
