@@ -59,4 +59,83 @@ public class Train {
 			return 0x0000FF;
 		}
 	}
+	
+	public float getNoZoneDistance() {
+		
+		if (speed == 0.0f) {
+			
+			return 100.0f;
+			
+		} else if (speed >= 1.0f && speed <= 30.0f) {
+			
+			return (-0.000352034f) * speed + 100.0f;
+					
+		} else if (speed >= 31.0f && speed <= 50.0f) {
+			
+			return (-0.00035f) * speed + 100.0f;
+			
+		} else if (speed >= 51.0f && speed <= 88.0f) {
+			
+			return (-0.00035f) * speed + 100.0f;
+			
+		} else {
+			
+			return 0.0f;
+			
+		}
+	
+	}
+	
+	public float getYellowSafeZoneDistance() {
+		
+		if (speed == 0.0f) {
+			
+			return 100.0f;
+			
+		} else if (speed >= 1.0f && speed <= 30.0f) {
+			
+			return 0.0018f * speed + 100.0f;
+					
+		} else if (speed >= 31.0f && speed <= 50.0f) {
+			
+			return 0.002f * speed + 100.0f;
+			
+		} else if (speed >= 51.0f && speed <= 88.0f) {
+			
+			return 0.0023f * speed + 100.0f;
+			
+		} else {
+			
+			return 0.0f;
+			
+		}
+	
+	}
+	
+	public float getRedSafeZoneDistance() {
+		
+		if (speed == 0.0f) {
+			
+			return 50.0f;
+			
+		} else if (speed >= 1.0f && speed <= 30.0f) {
+			
+			return 0.0011f * speed + 50.0f;
+					
+		} else if (speed >= 31.0f && speed <= 50.0f) {
+			
+			return 0.00125f * speed + 50.0f;
+			
+		} else if (speed >= 51.0f && speed <= 88.0f) {
+			
+			return 0.0014f * speed + 50.0f;
+			
+		} else {
+			
+			return 0.0f;
+			
+		}
+	
+	}
+	
 }
