@@ -143,7 +143,7 @@ public class Train {
 			
 			return (-0.00035f) * speed + 100.0f;
 			
-		} else if (speed >= 51.0f && speed <= 88.0f) {
+		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
 			return (-0.00035f) * speed + 100.0f;
 			
@@ -173,7 +173,7 @@ public class Train {
 			
 			return 0.002f * speed + 100.0f;
 			
-		} else if (speed >= 51.0f && speed <= 88.0f) {
+		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
 			return 0.0023f * speed + 100.0f;
 			
@@ -202,7 +202,7 @@ public class Train {
 			
 			return 0.00125f * speed + 50.0f;
 			
-		} else if (speed >= 51.0f && speed <= 88.0f) {
+		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
 			return 0.0014f * speed + 50.0f;
 			
