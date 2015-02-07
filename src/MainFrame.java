@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -55,7 +56,6 @@ public class MainFrame extends JFrame {
 		//Middle Panel (Trains)
 		
 		JPanel midPanel = new JPanel();
-		
 		add(midPanel, BorderLayout.CENTER);
 		
 		
