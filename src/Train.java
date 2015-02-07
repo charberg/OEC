@@ -131,21 +131,24 @@ public class Train {
 	 */
 	public float getNoZoneDistance() {
 		
+		//Use speed in meters/second
+		float speedMperS = speed * 1000.0f;
+		
 		if (speed == 0.0f) {
 			
 			return 100.0f;
 			
 		} else if (speed >= 1.0f && speed <= 30.0f) {
 			
-			return (-0.000352034f) * speed + 100.0f;
+			return (-0.000352034f) * speedMperS + 100.0f;
 					
 		} else if (speed >= 31.0f && speed <= 50.0f) {
 			
-			return (-0.00035f) * speed + 100.0f;
+			return (-0.00035f) * speedMperS + 100.0f;
 			
 		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
-			return (-0.00035f) * speed + 100.0f;
+			return (-0.00035f) * speedMperS + 100.0f;
 			
 		} else {
 			
@@ -161,21 +164,24 @@ public class Train {
 	 */
 	public float getYellowSafeZoneDistance() {
 		
+		//Use speed in meters/second
+		float speedMperS = speed * 1000.0f;
+		
 		if (speed == 0.0f) {
 			
 			return 100.0f;
 			
 		} else if (speed >= 1.0f && speed <= 30.0f) {
 			
-			return 0.0018f * speed + 100.0f;
+			return 0.0018f * speedMperS + 100.0f;
 					
 		} else if (speed >= 31.0f && speed <= 50.0f) {
 			
-			return 0.002f * speed + 100.0f;
+			return 0.002f * speedMperS + 100.0f;
 			
 		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
-			return 0.0023f * speed + 100.0f;
+			return 0.0023f * speedMperS + 100.0f;
 			
 		} else {
 			
@@ -190,21 +196,24 @@ public class Train {
 	 */
 	public float getRedSafeZoneDistance() {
 		
+		//Use speed in meters/second
+		float speedMperS = speed * 1000.0f;
+		
 		if (speed == 0.0f) {
 			
 			return 50.0f;
 			
 		} else if (speed >= 1.0f && speed <= 30.0f) {
 			
-			return 0.0011f * speed + 50.0f;
+			return 0.0011f * speedMperS + 50.0f;
 					
 		} else if (speed >= 31.0f && speed <= 50.0f) {
 			
-			return 0.00125f * speed + 50.0f;
+			return 0.00125f * speedMperS + 50.0f;
 			
 		} else if (speed >= 51.0f && speed <= 88.5f) {
 			
-			return 0.0014f * speed + 50.0f;
+			return 0.0014f * speedMperS + 50.0f;
 			
 		} else {
 			
