@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/** This class reads various train data from the database file. **/
 public class TrainDataReader {
 	
 	private static final String DATAFILE = "Testing.txt";
@@ -41,6 +42,7 @@ public class TrainDataReader {
 		
 	}
 	
+	/** Finds the total number of trains on the tracks. **/
 	private void findNumTrains() throws IOException{
 		
 		if(numTrains == -1){	//If number of trains not yet determined
@@ -80,6 +82,7 @@ public class TrainDataReader {
 		
 	}
 	
+	/** Read all train status at the current moment **/
 	public void readTrainData() throws IOException{
 		
 		String in;
@@ -129,6 +132,7 @@ public class TrainDataReader {
 
 	}
 	
+	/** Finds the train data from the train ID argument **/
 	public String searchTrains(String trainID) {
 		
 		if (trains == null) {
