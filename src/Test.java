@@ -1,7 +1,7 @@
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-
-define
 
 public class Test {
 	
@@ -10,7 +10,11 @@ public class Test {
 	public void readData(){
 		
 		File dataFile = new File(DATAFILE);
-		BufferedReader br = new BufferedReader(new FileReader())
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(dataFile));
+		} catch (FileNotFoundException e) {
+			System.out.println("");
+		}
 		
 	}
 
